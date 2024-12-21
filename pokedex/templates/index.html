@@ -11,6 +11,7 @@
             </div>
             <p class="p-2">Hola, este es tu primer sitio en Django</p>
             <ul class="list-group">
+
                 {% for pokemon in pokemons %}
                 <li class="list-group-item">
                     <a href="{{pokemon.pk}}">{{ pokemon | capfirst }}</a>
@@ -18,6 +19,16 @@
                 </li>
                 {% endfor %}
             </ul>
+            <h3>Entrenadores</h3>
+            <ul class="list-group">
+                {% for trainer in trainers %}
+                <li class="list-group-item">
+                    <a href="trainer/{{trainer.id}}">{{ trainer | capfirst }}</a>
+                    <div> {{trainer.level}} </div>
+                </li>
+                {% endfor %}
+            </ul>
+
         </div>
     </body>
 </html>
