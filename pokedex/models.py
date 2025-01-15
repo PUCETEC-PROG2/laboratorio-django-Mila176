@@ -10,8 +10,6 @@ class Trainer(models.Model):
     
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-    
-from django.db import models
 
 POKEMON_TYPES = (
     ('A', 'Agua'),
@@ -27,7 +25,8 @@ class Pokemon(models.Model):
     type = models.CharField(max_length=10, choices=POKEMON_TYPES)
     weight = models.DecimalField(max_digits=5, decimal_places=2)
     height = models.DecimalField(max_digits=5, decimal_places=2)
-    picture = models.ImageField(upload_to='pokemon_images', null=True, blank=True)
+    trainer = models.ForeignKey(Trainer, on_delete=models.SET_NULL,null= True )
+    picture = models.ImageField(upload_to='pokemon_images')
 
     def __str__(self):
        return self.name
